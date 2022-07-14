@@ -38,6 +38,12 @@ class Product {
         await client.db().collection('products').deleteOne({ _id: ObjectId(id) });
         return
     }
+
+    updateProduct(id) {
+        client.db().collection('products').updateOne({ _id: ObjectId(id) }, {$set: this});
+
+        return;
+    }
 }
 
 module.exports = Product;
