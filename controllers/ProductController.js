@@ -1,23 +1,29 @@
 const Product = require('../models/Product');
 
 module.exports = class ProductController {
-    static async showProducts(req, res) {
+    /* static async showProducts(req, res) {
         const products = await Product.getProducts();
         res.render('products/all', { products });
-    }
+    } */
 
     static createProduct(req, res) {
         res.render('products/create')
     }
 
-    static createProductPost(req, res) {
-        const { name, image, price, description } = req.body;
-        const product = new Product(name, image, price, description);
-        product.save();
+    static async createProductPost(req, res) {
+        const name = req.body.name;
+        const image = req.body.image;
+        const price = req.body.price;
+        const description = req.body.description;
+
+        const product = new Product({name, image, price, description});
+
+        await product.save();
+
         res.redirect('/products');
     }
 
-    static async getProduct(req, res) {
+    /* static async getProduct(req, res) {
         const id = req.params.id;
         const product = await Product.getProductById(id);
         res.render('products/single', { product });
@@ -46,5 +52,5 @@ module.exports = class ProductController {
         
         await product.updateProduct(id);
         res.redirect('/products');
-    }
+    } */
 }
