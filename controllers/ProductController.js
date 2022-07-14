@@ -28,4 +28,10 @@ module.exports = class ProductController {
         await Product.removeProductById(id);
         res.redirect('/products');
     }
+
+    static async updateProduct(req, res) {
+        const id = req.params.id;
+        const product = await Product.getProductById(id);
+        res.render('products/edit', { product });
+    }
 }
