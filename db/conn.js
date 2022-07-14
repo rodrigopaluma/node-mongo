@@ -8,17 +8,7 @@ async function run() {
 
         await client.connect();
         console.log('Connected to MongoDB');
-
         const db = client.db('node-mongo');
-        const collection = db.collection('toughts');
-
-        const result = await collection.insertOne({
-            title: 'Tought 1',
-            body: 'Body 1'
-        });
-
-        console.log(result.insertedId);
-
 
     } catch(err) {
         console.log(err);

@@ -2,7 +2,6 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 
 const app = express();
-
 const conn = require('./db/conn');
 
 const productsRoutes = require('./routes/productsRoutes');
